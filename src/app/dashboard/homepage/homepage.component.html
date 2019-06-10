@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <h1>Welcome, Kannan K D P</h1>
+  <hr>
+  <div class="row">
+      <div class="col-md-4" style="    border-right: 1px solid rgba(255, 255, 255, 0.28);
+    
+    ">
+          <h2>Select Preferences</h2>
+          <hr>
+
+          <mat-chip-list aria-label="Fish selection" class="mat-chip-list-stacked">
+        
+              <mat-chip>Primary fish</mat-chip>
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+          
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+          
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+          
+              <mat-chip color="primary" selected>Primary fish</mat-chip>
+          
+          
+            </mat-chip-list>
+
+
+      </div>
+
+      <div class="col-md-8" style="    padding: 0px 52px">
+
+          <h1>Predicted Stock Values</h1>
+          <hr>
+          <mat-accordion>
+                    <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Self aware panel
+                </mat-panel-title>
+                <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Self aware panel
+                </mat-panel-title>
+                <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Self aware panel
+                </mat-panel-title>
+                <mat-panel-description>
+                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              <p>I'm visible because I am open</p>
+            </mat-expansion-panel>
+          </mat-accordion>
+
+
+      </div>
+
+  </div>
+</div>

@@ -1,0 +1,144 @@
+<div class="container-fluid">
+  <div class="container">
+    <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Analysis">
+          <div class="cards">
+            <div class="row">
+              <div class="col-md-6 offset-md-3">
+                <form [formGroup]="forGetFile">
+                <mat-form-field >
+                  <mat-label>Series</mat-label>
+                  <mat-select formControlName="seriesNum">
+                    <mat-option *ngFor="let serie of Series" [value]="serie.value" >
+                      {{serie.value}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+
+                <button type="button" class="btn btn-primary ml-5" name="button5" (click)="getfilelist()"> View</button>
+                </form>
+                </div>
+
+            </div>
+                <div class="row" *ngIf="fromGetFile=='no_files'">
+                            <h4>Sorry,No uploads from faculty</h4>
+                </div>
+                <div class="row" *ngIf="fromGetFile!='ok' && fromGetFile!='no_files'">
+                    <button type="button" name="button" class="btn btn-primary" *ngFor="let item of fromGetFile" (click)="showAnaly(item)">
+                          {{item}}
+                    </button>
+                </div>
+                <div class="row" *ngIf="fromGetFileData!='ok'">
+                  <div class="backcard">
+                      <p [innerHTML]="fromGetFileData['analy']"></p><br>
+                      <button type="button" name="button8" (click)="saveAnalysis()">Save Analysis</button>
+                  </div>
+
+                </div>
+
+
+          </div>
+
+
+        </mat-tab>
+        <mat-tab label="Academics">
+          <div class="cards">
+            <div class="row">
+              <div class="col-md-4" *ngFor="let key of myob">
+                    <mat-card  (click)="setRes(results[key],key);basicModal1.show()" mdbWavesEffect>{{results[key]['sem']}} <br>{{results[key]['series']}} Series
+                      <br>
+                    </mat-card>
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        </mat-tab>
+
+        </mat-tab-group>
+  </div>
+
+</div>
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Analysis Made</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div mdbModal #basicModal1="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal1.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">{{semm.toUpperCase()}}-{{seer.toUpperCase()}} SERIES</h4>
+      </div>
+      <div class="modal-body">
+
+        <mat-tab-group mat-align-tabs="center">
+          <mat-tab label="Overview">
+              <div class="row pt-5">
+                <div class="col-md-6 pt-5">
+                    <h1>Table containing marks</h1>
+                </div>
+                <div class="col-md-6 pt-5">
+                  <div>
+                    <div>
+                      <div style="display: block">
+                        <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [plugins]="barChartPlugins"
+                          [legend]="barChartLegend"
+                            [colors]="colors"
+                          [chartType]="barChartType">
+                        </canvas>
+                      </div>
+
+                    </div>
+                    </div>
+                </div>
+
+              </div>
+
+
+          </mat-tab>
+          <mat-tab label="Analysis">
+              <div class="" *ngFor="let course of courses">
+                <h3> {{course}} </h3>
+                <p [innerHTML]="Ress['res'][course]"></p>
+
+              </div>
+
+
+
+          </mat-tab>
+
+        </mat-tab-group>
+      </div>
+      <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal1.hide()" mdbWavesEffect>Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>

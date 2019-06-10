@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 offset-3">
+        <h4>Sign Up</h4>
+        <div class="signup">
+          <form [formGroup]="facsignup">
+            <mat-form-field>
+                <input matInput placeholder="Enter Faculty ID" formControlName="facId">
+            </mat-form-field><br>
+            <mat-form-field>
+                <input matInput placeholder="Enter Name" formControlName="facname">
+            </mat-form-field><br>
+            <mat-form-field>
+              <input matInput placeholder="Enter your email" formControlName="facemail" required>
+
+            </mat-form-field><br>
+            <mat-form-field>
+                <mat-label>Designation</mat-label>
+                <mat-select formControlName="designation">
+                  <mat-option *ngFor="let desig of designations" [value]="desig.value">
+                    {{desig.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field><br>
+            <mat-form-field>
+             <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" formControlName="facpaswd">
+             <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+           </mat-form-field><br>
+
+           <button type="button" class="btn btn-primary mb-5" name="button" [disabled]="!facsignup.valid" (click)="facSignup()">Sign Up</button>
+          </form>
+
+
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-md-6 offset-3">
+        <div class="alert alert-success" *ngIf="message=='success'">
+   <strong>Success!</strong> Account Created Successfully
+        <a routerLink="../home">Login Here</a>
+ </div>
+ <div class="alert alert-danger" *ngIf="message!='success' && message!='ok' " >
+    <strong>Sorry!</strong> {{message}}
+  </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

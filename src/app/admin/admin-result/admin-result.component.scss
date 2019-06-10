@@ -1,0 +1,60 @@
+.container-fluid{
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.container{
+  margin-top: 100px;
+      background-color: #495057;
+
+      height: 100%;
+      border-radius: 8px;
+      padding: 40px 0px;
+}
+.stat{
+  padding: 0px 30px;
+;
+}
+.pass{
+  float: left;
+  background: #4CAF50;
+  padding: 10px 24px;
+  border-radius: 10px;
+}
+.perc{
+  float: right;
+  background: #2196F3;
+  padding: 10px 24px;
+  border-radius: 10px;
+}
+.fail{
+  float: none;
+  background: #F44336;
+  padding: 10px 24px;
+  border-radius: 10px;
+}
+hr{
+  background-color: #6c757d;
+  margin: 40px auto;
+  width: 60%;
+
+}
+.list-group-item{
+  background-color: #49505799;
+      padding: 18px 40px
+}
+.list-group{
+  text-transform: uppercase;
+}
+.badge{
+  //margin-right: 20px;
+  padding: 5px;
+  font-size: 15px;
+}
+.sub{
+  float: left;
+}
+.det{
+  float: right;
+}

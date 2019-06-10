@@ -1,0 +1,126 @@
+<div class="container-fluid first">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="jumbotron">
+          <img src="../../assets/img/Logo.png" alt="Logo.png">
+          <h1>BestStock</h1><hr>
+        </div>
+      </div>
+      <div class="col-md-6">
+              <div class="login">
+                <h2 class="pad">Log In</h2>
+                <h6 style="padding-bottom:30px;">Welcome</h6><hr>
+                <form [formGroup]="loginform">
+                  <mat-form-field appearance="outline" style="width:80%;">
+                    <mat-label>Mail id</mat-label>
+                    <input id="Form-email5" formControlName="emailLogin" matInput placeholder="Enter your email" required>
+                  </mat-form-field><br>
+                  <mat-form-field appearance="outline" style="width:80%;">
+                        <mat-label>Password</mat-label>
+                    <input id="Form-pass6" formControlName="passwdLogin" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+                    <button style="color:white;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field><br>
+                  <button class="btn btn-primary" [disabled]="!loginform.valid" (click)="onSignin();" block="true" type="button" name="button">Log In</button>
+                </form>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>Don't Have an Account?  <a style="color:#2196f3;"(click)="basicModal.show()">Sign Up</a></p>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-6 offset-3">
+                        <div class="alert alert-success" *ngIf="errorLogin=='success'">
+                   <strong>Success!</strong> Logged In .Please Wait
+
+                 </div>
+                 <div class="alert alert-danger" *ngIf="errorLogin!='success' && errorLogin!='ok' " >
+                    <strong>Sorry!</strong> {{errorLogin}}
+                  </div>
+
+                      </div>
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Modal start
+========================================================================================================
+==============================================================================================
+
+-->
+<div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true" routerLink="/dashboard/homepage">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()" routerLink="/dashboard/homepage">
+          <span aria-hidden="true" style="color:white;">×</span>
+        </button>
+        <h4 class="modal-title w-100 pad" id="myModalLabel">Sign Up</h4>
+      </div>
+      <div class="modal-body">
+          <form [formGroup]="signupform">
+
+          <mat-form-field appearance="outline" style="width:80%;">
+            <mat-label>Name </mat-label>
+            <input id="Form-text7" formControlName="uname" matInput placeholder="Enter Name">
+          </mat-form-field><br>
+          <mat-form-field appearance="outline" style="width:80%;">
+            <mat-label>Mail id</mat-label>
+            <input id="Form-email6" formControlName="mailId" matInput placeholder="Enter your email" required>
+          </mat-form-field><br>
+          <mat-form-field appearance="outline" style="width:80%;">
+                <mat-label>Password</mat-label>
+            <input id="Form-pass5" formControlName="passwd1" matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+            <button style="color:white;" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field><br>
+
+          <mat-form-field >
+            <mat-label>Designation</mat-label>
+            <mat-select formControlName="des">
+              <mat-option *ngFor="let desi of desig" [value]="desi.value">
+                {{desi.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>  
+            <br>
+          <button type="button" class="btn btn-success" name="button" [disabled]="!signupform.valid" (click)="onSignup();">Sign Up</button>
+            </form>
+            <div class="row">
+              <div class="col-md-6 offset-3">
+                <div class="alert alert-success" *ngIf="errorSignup=='success'">
+           <strong>Success!</strong> Account Created Successfully
+                <br>Please Login
+         </div>
+         <div class="alert alert-danger" *ngIf="errorSignup!='success' && errorSignup!='ok' " >
+            <strong>Sorry!</strong> {{errorSignup}}
+          </div>
+
+              </div>
+
+            </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!--
+=======================================================================================
+============================================================================================ -->
+
+ 
