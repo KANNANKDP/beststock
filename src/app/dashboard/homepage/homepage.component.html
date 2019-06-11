@@ -10,15 +10,15 @@
 
           <mat-chip-list aria-label="Fish selection" class="mat-chip-list-stacked" multiple >
         
-              <mat-chip color="primary" [selected]=prefOptions[0] (click)="toggleOption(0);" >Primary fish</mat-chip>
+              <mat-chip color="primary" [selected]=prefOptions[0] (click)="toggleOption(0);" >Pharmaceutical</mat-chip>
 
-              <mat-chip color="primary" [selected]=prefOptions[1] (click)="toggleOption(1);" >Primary fish</mat-chip>
+              <mat-chip color="primary" [selected]=prefOptions[1] (click)="toggleOption(1);" >Automobile</mat-chip>
           
-              <mat-chip color="primary" [selected]=prefOptions[2] (click)="toggleOption(2);" >Primary fish</mat-chip>
+              <mat-chip color="primary" [selected]=prefOptions[2] (click)="toggleOption(2);" >Information Technology</mat-chip>
           
-              <mat-chip color="primary" [selected]=prefOptions[3] (click)="toggleOption(3);" >Primary fish</mat-chip>
+              <mat-chip color="primary" [selected]=prefOptions[3] (click)="toggleOption(3);" >Banking</mat-chip>
           
-              <mat-chip color="primary" [selected]=prefOptions[4] (click)="toggleOption(4);" >Primary fish</mat-chip>
+              <mat-chip color="primary" [selected]=prefOptions[4] (click)="toggleOption(4);" >Consumer Electronics</mat-chip>
           
           
             </mat-chip-list>
@@ -27,47 +27,47 @@
       </div>
 
       <div class="col-md-8" style="    padding: 0px 52px">
+        <button class="btn btn-success" (click)="fetchContent();">Fetch</button>
 
           <h1>Predicted Stock Values</h1>
           <hr>
-          <mat-accordion>
-                    <mat-expansion-panel (opened)="panelOpenState = true"
-                                (closed)="panelOpenState = false">
+          <h4 *ngIf="stat=='wait'">Fetching...</h4>
+          <mat-accordion *ngIf="content">
+            <mat-expansion-panel *ngFor="let element of contentKeys">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  Self aware panel
+                  {{element}}
                 </mat-panel-title>
-                <mat-panel-description>
-                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description>
               </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
+              <div *ngFor="let sub of subKeys[element]">
+                <h4>{{sub}}</h4>
+              <table class="table"  style="background-color: #A8A8A8;">
+                <thead>
+                  <tr >
+                    <th>Open</th>
+                    <th>High</th>
+                    <th>Low</th>
+                    <th>Close</th>
+                    <th>Volume</th>
+                    <th>Confidence Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr >
+                    <td>{{content[element][sub]['open']}}</td>
+                    <td>{{content[element][sub]['high']}}</td>
+                    <td>{{content[element][sub]['low']}}</td>
+                    <td>{{content[element][sub]['close']}}</td>
+                    <td>{{content[element][sub]['volume']}}</td>
+                    <td>{{content[element][sub]['confidence_value']}}</td> 
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+              
             </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Self aware panel
-                </mat-panel-title>
-                <mat-panel-description>
-                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-            <mat-expansion-panel (opened)="panelOpenState = true"
-                                (closed)="panelOpenState = false">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Self aware panel
-                </mat-panel-title>
-                <mat-panel-description>
-                  Currently I am {{panelOpenState ? 'open' : 'closed'}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <p>I'm visible because I am open</p>
-            </mat-expansion-panel>
-          </mat-accordion>
+               
+          </mat-accordion> 
 
 
       </div>

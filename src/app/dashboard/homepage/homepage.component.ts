@@ -22,9 +22,13 @@ export class HomepageComponent implements OnInit {
    panelOpenState = false;
    prefOptions:any;
    Data:any;
-   
+   content:any;
+   contentKeys:any;
+   subKeys={};
+   prefString:string;
+   stat:any;
  
-  constructor(private authservice:AuthService) {}
+  constructor(private authservice:AuthService,private http:HttpClient) {}
 
 
 
@@ -32,7 +36,14 @@ export class HomepageComponent implements OnInit {
   		this.Data=this.authservice.getUserData();
 
 	this.prefOptions=this.Data.preference;
-
+	this.prefString=
+  		((this.prefOptions[0])?',Pharmaceutical':'')+
+  		((this.prefOptions[1])?',Automobile':'')+
+  		((this.prefOptions[2])?',Information Technology':'')+
+  		((this.prefOptions[3])?',Banking':'')+
+  		((this.prefOptions[4])?',Consumer Electronics':'')
+  		;
+  	this.prefString=this.prefString.substring(1);	
 
 
   }
@@ -40,6 +51,31 @@ export class HomepageComponent implements OnInit {
   	this.prefOptions[i]=!this.prefOptions[i];
   	this.authservice.updatePref(this.prefOptions);
   	console.log(this.prefOptions);
+  	this.prefString=
+  		((this.prefOptions[0])?',Pharmaceutical':'')+
+  		((this.prefOptions[1])?',Automobile':'')+
+  		((this.prefOptions[2])?',Information Technology':'')+
+  		((this.prefOptions[3])?',Banking':'')+
+  		((this.prefOptions[4])?',Consumer Electronics':'')
+  		;
+  	this.prefString=this.prefString.substring(1);	
+  	console.log(this.prefString);	
+  }
+
+  fetchContent(){
+  	this.stat='wait';
+  	this.http.get('http://127.0.0.1:5002/StockPred/'+this.prefString+'/').subscribe((val) => {
+
+      this.content=val;
+      console.log(this.content);
+      this.contentKeys=Object.keys(this.content);
+      for(let item of this.contentKeys){
+      	this.subKeys[item]=Object.keys(this.content[item]);
+      }
+      console.log(this.subKeys);
+      this.stat='done';
+
+    });
   }
 
 
