@@ -1,0 +1,158 @@
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h6>S5 Elective</h6>
+          <div class="elective" (click)="getElective()">
+            <h6>Predict</h6>
+          </div>
+      </div>
+      <!--<div class="col-md-3">
+        <h6>S6 Elective</h6>
+        <div class="elective">
+          <h6>Predict</h6>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <h6>S7 Elective</h6>
+        <div class="elective">
+          <h6>Predict</h6>
+        </div>
+
+      </div>
+      <div class="col-md-3">
+        <h6>S8 Elective</h6>
+        <div class="elective">
+          <h6>Predict</h6>
+        </div>
+
+      </div>
+    </div>-->
+
+
+
+
+  </div>
+  <div  *ngIf="divopen && ElectiveData">
+      <div class="row">
+        <div class="col-md-6">
+          <h4>{{ElectiveData[0]}}</h4>
+        </div>
+        <div class="col-md-6">
+          <h4>{{ElectiveData[1]}}</h4>
+        </div>
+
+      </div>
+  </div>
+
+  <!--<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h6 class="elective">Seminar Topic : <span>adasdasdasdasd</span>  </h6>
+      </div>
+      <div class="col-md-6">
+        <h6 class="elective">Project Topic : <span>adasdasdasdasd</span>  </h6>
+      </div>
+
+    </div>
+
+  </div>-->
+<br><br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form  [formGroup]="projectGroupPredict">
+      <mat-card>
+            <h4>Intrested to Work in:</h4>
+            <ul class="list-group">
+              <li class="list-group-item" *ngIf="intrestValue" >{{intrestValue}} <mat-icon style="float:right;" (click)="edit=!edit;">edit</mat-icon></li>
+              <li class="list-group-item" *ngIf="!intrestValue || edit">
+                <mat-form-field >
+                    <input matInput placeholder="Your Intrests" formControlName="intrests">
+                    <mat-hint align="start"><strong>eg:Machine Learning,Image Processing</strong> </mat-hint>
+                </mat-form-field><br>
+              </li>
+            </ul>
+            <br>
+            <h4>Your Expertise:</h4>
+            <ul class="list-group">
+              <li class="list-group-item" *ngIf="expertiseValue" >{{expertiseValue}} <mat-icon style="float:right;" (click)="edit2=!edit2;">edit</mat-icon></li>
+              <li class="list-group-item" *ngIf="!expertiseValue || edit2">
+                <mat-form-field >
+                    <mat-label>Your Expertise</mat-label>
+                    <mat-select formControlName="EXpertise">
+                      <mat-option *ngFor="let exp of Expertise" [value]="exp.value">
+                        {{exp.value}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+              </li>
+            </ul>
+            <br>
+            <button type="button" class="btn btn-primary" name="button89" *ngIf="edit || edit2" (click)="updateIntrExper()">Submit</button>
+      </mat-card>
+
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form [formGroup]="forGroupSearch">
+      <mat-card>
+        <h4>Search For Team Members</h4>
+        <ul class="list-group">
+
+          <li class="list-group-item">
+            <mat-form-field >
+                <input matInput placeholder="Partner Intrests" formControlName="intrestForSearch">
+                <mat-hint align="start"><strong>eg:Machine Learning,Image Processing</strong> </mat-hint>
+            </mat-form-field><br>
+          </li>
+          <li class="list-group-item">
+            <mat-form-field >
+                <input matInput placeholder="Minimum GPA Required" formControlName="GPAForSearch">
+            </mat-form-field><br>
+          </li>
+          <li class="list-group-item">
+            <mat-form-field >
+                <mat-label>Partner Expertise</mat-label>
+                <mat-select formControlName="EXpertiseForSearch">
+                  <mat-option *ngFor="let exp of Expertise" [value]="exp.value">
+                    {{exp.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </li>
+        </ul>
+        <br>
+        <button type="button" name="button578" class="btn btn-primary" [disabled]="!forGroupSearch.valid" (click)="getMembers()">Search</button>
+      </mat-card>
+      </form>
+    </div>
+    <div class="container" *ngIf="resultByExpertise=='null'">
+      <br><br>
+      <h4 >No Matching Member Found</h4>
+    </div>
+
+  </div>
+  <div class="container" *ngIf="resultByExpertise!='null' && resultByExpertise!='ok'">
+    <h4 style="color:white;">Matching Members</h4>
+    <table class="table table-striped" style="background-color:#f8f9fae0;border-radius:5px;">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Intrests</th>
+        <th>GPA</th>
+      </tr>
+      </thead>
+       <tbody>
+         <tr *ngFor="let a of getList()">
+           <td>{{a['name']}}</td>
+           <td>{{a['intrest']}}</td>
+           <td>{{a['gpa']}}</td>
+         </tr>
+       </tbody>
+    </table>
+   </div>
+</div>
+
+</div>

@@ -1,0 +1,10 @@
+
+.bg-dark{
+  background-color: #495057!important;
+}
+::ng-deep { .cdk-global-overlay-wrapper, .cdk-overlay-container { z-index: 9999!important; } }
+
+
+.mat-form-field{
+    width: 80%;
+}

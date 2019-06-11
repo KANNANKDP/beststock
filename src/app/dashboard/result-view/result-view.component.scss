@@ -1,0 +1,56 @@
+.container-fluid{
+
+  background-position: 0px 179px;
+  background-repeat: no-repeat;
+  width: 100%;
+  //background-image: url(/assets/img/308.png);
+  background-color: #212529;
+  height: 100vh;
+  padding-top: 100px;
+  background-attachment: fixed;
+    background-size: cover;
+  text-align: center;
+  color: white;
+
+}
+
+.backcard{
+  background-color: #343a40;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+.container{
+
+  //background-color: #ffffffab;
+background-color: #212529;
+  height: 100%;
+  border-radius: 8px;
+  padding-bottom: 30px;
+  color: white;
+}
+mat-card{
+  margin: 20px;
+  padding: 30px;
+  height: 150px;
+      background-color: #dee2e6;
+
+
+}
+.cards{
+
+  width: 80%;
+  margin: 20px auto;
+}
+mat-card:hover{
+  background-color: #495057;
+  color: white;
+  cursor: pointer;
+}
+.row{
+  margin: 0px;
+  padding: 0px;
+}
+.modal{
+  color: white !important;
+}

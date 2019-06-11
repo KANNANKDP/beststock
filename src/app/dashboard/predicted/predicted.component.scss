@@ -1,0 +1,41 @@
+.container{
+  margin-top: 100px;
+  text-align: center;
+}
+.row{
+  color: white;
+}
+.elective{
+  background-color: #343a40;
+  padding: 20px;
+border-radius: 10px;
+}
+.elective:hover{
+  cursor: pointer;
+}
+.sem{
+  color: white;
+  background-color: #343a40;
+  padding: 20px;
+border-radius: 10px;
+text-align: left;
+}
+.topic{
+  background-color: #343a40;
+  padding: 20px;
+border-radius: 10px;
+}
+.col-md-6{
+
+  padding: 20px;
+border-radius: 10px;
+
+}
+
+.list-group-item{
+  background-color: #49505799;
+}
+
+.mat-form-field{
+  width:80%;
+}

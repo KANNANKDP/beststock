@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/purple-green.css';
+/*.mat-tab-label-content {
+  color: white !important;
+}
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header .mat-step-label{
+  color: white !important;
+}
+.mat-stepper-label-position-bottom .mat-horizontal-stepper-header-container{
+    color: white !important;
+}
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: blue !important;
+}
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-inner-circle{
+  background-color: blue !important;
+}
+*/
+body,head{
+ background-color: #212529 !important;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+.jumbotron[_ngcontent-c3] {
+    background-color: #343a40 !important;
+}
+.mat-radio-label-content {
+  color: white !important;
+}
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+    -webkit-animation-name: cdk-text-field-autofill-end;
+    animation-name: cdk-text-field-autofill-end;
+    color: white !important;
+}
+.modal-dialog .modal-content{
+  background-color: #343a40 !important;
+}
+.mat-card{
+  background-color: #343a40 !important;
+
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: none !important;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: Quicksand;
+}
+.mat-ink-bar{
+  height: 5px !important;
+border-top-left-radius: 20px !important;
+border-top-right-radius: 20px !important;
+}
+.mat-chip-list-wrapper{
+  display: block !important;
+}

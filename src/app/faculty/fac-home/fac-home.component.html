@@ -1,0 +1,152 @@
+<div class="container-fluid">
+  <div class="">
+    <div class="row">
+      <div class="col-md-6">
+            <h6>Attentention Required:0</h6>
+      </div>
+      <div class="col-md-6">
+            <h6>Currently Under:0</h6>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="container table-responsive">
+    <form [formGroup]="CourseDetails">
+      <table class="table table-striped" style="border-radius:5px;">
+        <thead class="clrwht">
+          <th>Batch</th>
+          <th>Semester</th>
+          <th>Course Code</th>
+          <th>Course Code</th>
+          <th>Status</th>
+        </thead>
+        <tbody >
+          <tr *ngFor="let rec of courseDataFetchedKeys; let i = index" class="clrwht">
+            <td>{{courseDataFetched[rec]['batch']}}</td>
+            <td>{{courseDataFetched[rec]['sem']}}</td>
+            <td>{{courseDataFetched[rec]['c_code']}}</td>
+            <td>{{courseDataFetched[rec]['c_name']}}</td>
+            <td *ngIf="courseDataFetched[rec]['status']=='active'"><button  name="button" class="btn btn-primary" (click)="toComplete(i)">Active</button></td>
+            <td *ngIf="courseDataFetched[rec]['status']=='complete'"><button  name="button" class="btn btn-warning" (click)="toActive(i)">Completed</button></td>
+          </tr>
+          <tr >
+          <td>
+            <mat-form-field >
+                <mat-label>Batch</mat-label>
+                <mat-select formControlName="batch">
+                  <mat-option *ngFor="let batch of Batches" [value]="batch.value">
+                    {{batch.value}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field >
+              <mat-label>Semester</mat-label>
+              <mat-select formControlName="sem">
+                <mat-option *ngFor="let sem of Semester" [value]="sem.value" >
+                  {{sem.value}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field>
+                <input type="text"  matInput placeholder="Course Code" formControlName="course_code"  required>
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field >
+                <input type="text"  matInput placeholder="Course Name" formControlName="course_name" required>
+            </mat-form-field>
+          </td>
+          <td><button  name="button57899" class="btn btn-primary" (click)="courseDetailsAdd()">Add</button></td>
+          </tr>
+        </tbody>
+
+      </table>
+    </form>
+
+  </div>
+  <div class="container">
+    <br><br>
+    <h2 *ngIf="!message['passed']">Upload Series Mark file from nav-bar</h2>
+    <h4 *ngIf="message['passed']">Series{{message['series']}}</h4>
+    <h6 *ngIf="message['passed']">{{message['course_name']}}</h6>
+    <div class="row">
+
+      <div class="col-md-6" *ngIf="message['passed']">
+        <h6 *ngIf="message['passed']">Mark Distribution</h6>
+        <div style="display: block" *ngIf="message['total_mark_distrib']">
+          <canvas baseChart
+            [datasets]="[{data:message['total_mark_distrib'],label:'distribution'}]"
+            [labels]="barChartLabels.slice(0,message['total_mark_distrib'].length)"
+            [options]="barChartOptions"
+            [plugins]="barChartPlugins"
+            [legend]="barChartLegend"
+            [colors]="colors"
+            [chartType]="barChartType">
+          </canvas>
+        </div>
+      </div>
+      <div class="col-md-6" *ngIf="message['passed']">
+        <h6>PASS:{{message['passed']}}</h6>
+        <div style="display: block" *ngIf="message['passed']">
+      <canvas baseChart
+        [data]="[message['passed'],message['failed']]"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType">
+      </canvas>
+    </div>
+      </div>
+
+    </div>
+    <div class="row" *ngIf="message['top_five']">
+      <h3>Top 5</h3>
+            <table class="table table-striped" style="background-color:#f8f9fae0;border-radius:5px;">
+       <thead>
+         <tr>
+           <th>Uni.Reg.No</th>
+           <th>Name</th>
+           <th>Marks</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let per of message['top_five']">
+           <td>{{per['uni_no']}}</td>
+           <td>{{per['name']}}</td>
+           <td>{{per['mark']}}</td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+
+    <div class="row" *ngIf="message['least_five']">
+      <h3>Least 5</h3>
+            <table class="table table-striped" style="background-color:#f8f9fae0;border-radius:5px;">
+       <thead>
+         <tr>
+           <th>Uni.Reg.No</th>
+           <th>Name</th>
+           <th>Marks</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr *ngFor="let per of message['least_five']">
+           <td>{{per['uni_no']}}</td>
+           <td>{{per['name']}}</td>
+           <td>{{per['mark']}}</td>
+         </tr>
+       </tbody>
+      </table>
+    </div>
+<br>
+  <button type="button" name="button" class="btn btn-success" (click)="saveAnalysis()" *ngIf="message['least_five']">Save Analysis</button>
+
+
+
+  </div>
+
+</div>
